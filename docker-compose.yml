@@ -1,0 +1,70 @@
+version: '3'
+
+networks:
+  scott:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: scott-app
+    tty: true
+    restart: unless-stopped
+    volumes:
+      - .:/srv/app:cached
+    ports:
+      - "80:80"
+    networks:
+      - scott
+    depends_on:
+      - mysql
+      - redis
+      - mailhog
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: scott-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - scott
+
+  mysql:
+    image: mysql:5.7
+    container_name: scott-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: scott
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: scott
+      MYSQL_ROOT_PASSWORD: scott
+    volumes:
+      - ~/scott-mysql:/var/lib/mysql:rw,delegated
+    ports:
+      - "3306:3306"
+    networks:
+      - scott
+
+  redis:
+    image: redis:4.0-alpine
+    container_name: scott-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - scott
+
+  elasticsearch:
+    image: elasticsearch:7.9.3
+    container_name: scott-elasticsearch
+    restart: unless-stopped
+    environment:
+      discovery.type: single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - scott
