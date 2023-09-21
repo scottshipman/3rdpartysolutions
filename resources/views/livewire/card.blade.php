@@ -1,5 +1,7 @@
-<div>
+<div style="background-color:white;">
+
     <div class="card">
+        <h1>Css Animation</h1>
         <div class="card__inner">
             <div class="card__face card__face--front">
                 <h2>{{ $cardData['frontTitle'] }}</h2>

@@ -1,13 +1,5 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
 ## Scott's Laravel 7 UI/UX Demo
+<p align="center"><img src="public/img/demo-screenshot.png" width="400"></p>
 
 This is a Laravel 7.3 installation running on PHP 7.2 in a docker container
 
@@ -16,6 +8,8 @@ This is a Laravel 7.3 installation running on PHP 7.2 in a docker container
 - google maps js api
 - livewire
 - javascript / css animations
+- chart.js
+- multi-step form
 
 ## Installation
 
@@ -54,3 +48,18 @@ All widgets are wrapped in a Livewire container (blade).
 Regarding the Google Maps API...having some trouble getting google to not restrict
 API calls from localhost. As time allows, I'll work further on this, however the code is
 correct.
+
+
+## Update
+
+I dont think the google maps API is going to work out because of localhost referrer.
+
+So, added a multi-step form with javascript management and a simple chart.js bar chart.
+
+## Disclosures
+- I didnt do much to architect js and css, with task runners (webpack, yarn, npm  etc). That would be my next step.
+- When data was needed, I just hardcoded it. With more time, I would demonstrate the handoff of data
+from the backend to the frontend, either with api endpoints (ajax), or
+other dynamic param passing into livewire. The Welcome widget demonstrates the standard blade method of dynamic data. But my preference would
+have been to call an api, return json, then use a js method to pass data into the widget.
+- 
